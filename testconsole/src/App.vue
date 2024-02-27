@@ -30,21 +30,21 @@ export default defineComponent({
         id: "1"
       },
       {
-        title: "Farm Worker 2",
-        location: "A Farm 2",
-        salary: 30002,
+        title: "Boat Captain",
+        location: "Zanzabar",
+        salary: 12344,
         id: "2"
       },
       {
-        title: "Farm Worker 3",
-        location: "A Farm 3",
+        title: "Fisherman",
+        location: "Portugal",
         salary: 30003,
         id: "3"
       },
       {
-        title: "Farm Worker 4",
-        location: "A Farm 4",
-        salary: 30004,
+        title: "Dog Sitter",
+        location: "New York",
+        salary: 5,
         id: "4"
       },
     ]);
