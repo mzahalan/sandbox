@@ -13,14 +13,23 @@
             margin: 20px;
             display: inline-block;
         }
+        ul.booklist li img {
+            width: 50px;
+        }
     </style>    
 </head>
 <body>
     <h1>Hello, Vue :)</h1>
     <div id="app">
+        <a v-bind:href="url">The Best website ever</a>
+        <a :href="url">This is the same link, just easier to write</a>
         <div v-if="showBooks">
-            <ul v-for="book in books">
-                <li><h3>{{book.title}}</h3><p>{{ book.author }}</p></li>
+            <ul class="booklist" v-for="book in books">
+                <li>
+                    <img :src="book.img" :alt="book.title"/>
+                    <h3>{{book.title}}</h3>
+                    <p>{{ book.author }}</p>
+                </li>
             </ul>
         </div>
         <button @click="toggleShowBooks">
