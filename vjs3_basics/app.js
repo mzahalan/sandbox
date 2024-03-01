@@ -3,16 +3,17 @@ const app = Vue.createApp({
     data() {
         return {
             showBooks: true,
-            title: "Return of the Empire",
-            author: "Brandon Sanderson",
+            books: [
+                { title: "Return of the Empire", author: "Brandon Sanderson" },
+                { title: "The Last Wish", author: "Andrzej Sapkowski" },
+                { title: "The Rise of Skywalker", author: "J. J. Abrams" },
+                { title: "The Fellowship of the Ring", author: "JRR Tolkien" }
+            ],
             x: 0,
             y: 0
         }
     },
     methods: {
-        changeTitle(title) {
-            this.title = title
-        },
         toggleShowBooks() {
             this.showBooks = !this.showBooks
         },
