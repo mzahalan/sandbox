@@ -49,7 +49,7 @@
         <a :href="url">This is the same link, just easier to write</a>
         <div v-if="showBooks">
             <ul class="booklist"> 
-                <li  v-for="book in books" :class="{ fav: book.isFav }">
+                <li  v-for="book in filteredBooks" :class="{ fav: book.isFav }">
                     <button @click="toggleFav(book)">Toggle Fav</button>
                     <img :src="book.img" :alt="book.title"/>
                     <h3>{{book.title}}</h3>

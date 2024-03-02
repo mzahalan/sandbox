@@ -31,10 +31,14 @@ const app = Vue.createApp({
             this.x = event.offsetX
             this.y = event.offsetY
         }
+    },
+    computed: {
+        filteredBooks() {
+            return this.books.filter(book => book.isFav)
+        }
     }
 
 })
 
 app.mount('#app')
-
-// challenge - toggle isFav on click
+// Computed Properties are
