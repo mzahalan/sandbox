@@ -5,10 +5,10 @@ const app = Vue.createApp({
             url: 'http://www.thenetninja.co.uk',
             showBooks: true,
             books: [
-                { title: "The Way of Kings", author: "Brandon Sanderson", img: 'assets/way_of_kings.jpeg' },
-                { title: "The Last Wish", author: "Andrzej Sapkowski", img: 'assets/last_wish.jpeg' },
-                { title: "The Rise of Skywalker", author: "J. J. Abrams", img: 'assets/rise_of_skywalker.jpeg'},
-                { title: "The Fellowship of the Ring", author: "JRR Tolkien", img: 'assets/fellowship.jpeg' }
+                { title: "The Way of Kings", author: "Brandon Sanderson", img: 'assets/way_of_kings.jpeg', isFav: true },
+                { title: "The Last Wish", author: "Andrzej Sapkowski", img: 'assets/last_wish.jpeg', isFav: false },
+                { title: "The Rise of Skywalker", author: "J. J. Abrams", img: 'assets/rise_of_skywalker.jpeg', isFav: false},
+                { title: "The Fellowship of the Ring", author: "JRR Tolkien", img: 'assets/fellowship.jpeg', isFav: true }
             ],
             x: 0,
             y: 0
@@ -24,6 +24,9 @@ const app = Vue.createApp({
                 console.log(data)
             }
         },
+        toggleFav(book) {
+            book.isFav =!book.isFav
+        },
         handleMouseMove(event) {
             this.x = event.offsetX
             this.y = event.offsetY
@@ -33,3 +36,5 @@ const app = Vue.createApp({
 })
 
 app.mount('#app')
+
+// challenge - toggle isFav on click
