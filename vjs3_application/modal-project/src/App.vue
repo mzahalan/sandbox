@@ -2,7 +2,7 @@
   <h1>{{ title }}</h1>
   <input type="text" ref="name">
   <button @click="handleClick">click me</button>
-  <Modal />
+  <Modal  :header="header" :text="text" theme="sale"/>
 </template>
 
 <script>
@@ -12,7 +12,9 @@ export default {
   name: 'App',
   data() {
     return {
-      title: "My First View App :)"
+      title: "My First View App :)",
+      header: "sign up for the Giveaway!",
+      text: "Grab your ..."
     }
   },
   components: {
