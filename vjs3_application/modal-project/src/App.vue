@@ -11,10 +11,28 @@
       </template>
     </Modal>
   </div>
+  <div v-if="showModal2">
+    <Modal @close="toggleModal2">
+      <h1>modal2</h1>
+      <p>This is a second modal</p>
+      <template v-slot:links>
+        <a href="#">New Links!</a>
+        <a href="#">More Info</a>
+      </template>
+    </Modal>
+  </div>
   <button @click.alt="toggleModal">show modal (alt)</button>
+  <button @click="toggleModal2">Show New Modal</button>
 </template>
 
 <script>
+
+// challenge - 
+// - Create an extra button to open a different modal
+// - use the same modal component but pass in a different template (slot)
+// - use a different method (toggleTwo) and data (showModalTwo)
+
+
 import Modal from './components/Modal.vue'
 
 export default {
@@ -22,9 +40,9 @@ export default {
   data() {
     return {
       title: "My First View App :)",
-      header: "sign up for the Giveaway!",
-      text: "Grab your ...",
-      showModal: false
+
+      showModal: false,
+      showModal2: false,
     }
   },
   components: {
@@ -33,6 +51,9 @@ export default {
   methods: {
     toggleModal() {
       this.showModal =!this.showModal
+    },
+    toggleModal2() {
+      this.showModal2 = !this.showModal2
     }
   }
 }
