@@ -1,8 +1,10 @@
 <template>
   <h1>{{ title }}</h1>
-  <input type="text" ref="name">
-  <button @click="handleClick">click me</button>
-  <Modal  :header="header" :text="text" theme="sale"/>
+  <p>Welcome...</p>
+  <div v-if="showModal">
+    <Modal  :header="header" :text="text" theme="sale" @close="toggleModal"/>
+  </div>
+  <button @click.alt="toggleModal">show modal (alt)</button>
 </template>
 
 <script>
@@ -14,16 +16,16 @@ export default {
     return {
       title: "My First View App :)",
       header: "sign up for the Giveaway!",
-      text: "Grab your ..."
+      text: "Grab your ...",
+      showModal: false
     }
   },
   components: {
     Modal
   },
   methods: {
-    handleClick() {
-      console.log(this.$refs.name)
-      this.$refs.name.focus()
+    toggleModal() {
+      this.showModal =!this.showModal
     }
   }
 }
