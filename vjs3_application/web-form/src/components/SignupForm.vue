@@ -9,32 +9,25 @@
             <option value="developer">Web Developer</option>
             <option value="designer">Web Designer</option>
         </select>
-
+        <label >skills</label>
+        <input type="text" v-model="tempSkill" @keyup="commaCheck">
+        <div v-for="skill in skills" :key="skill" class="pill" @click="deleteMe(skill)">
+            {{ skill }}
+        </div>
         <div class="terms">
             <input type="checkbox" v-model="terms" required>
             <label>Accept Terms and Conditions</label>
-        </div>
-
-        <div>
-            <input type="checkbox" value="Matt" v-model="names">
-            <label >Matt</label>
-            <input type="checkbox" value="Mike" v-model="names">
-            <label >Mike</label>
-            <input type="checkbox" value="David" v-model="names">
-            <label >David</label>
-            <input type="checkbox" value="Chris" v-model="names">
-            <label >Chris</label>
         </div>
     </form>
     <p>Email: {{ email }}</p>
     <p>Password: {{ password }}</p>
     <p>Role: {{ role }}</p>
     <p>Accepted: {{ terms }}</p>
-    <p>Names: {{ names }}</p>
 </template>
 
 
 <script>
+// Challenge - Delete Skills.
 export default {
     data() {
         return {
@@ -42,7 +35,26 @@ export default {
             password: '',
             role: 'developer',
             terms: false,
-            names: []
+            tempSkill: '',
+            skills: []
+        }
+    },
+    methods: {
+        commaCheck(e) {
+            console.log(e)
+            if(e.key === ',') {
+                let newSkill = this.tempSkill.slice(0,-1)
+                this.tempSkill = ''
+
+                if(newSkill.length > 0 && !this.skills.includes(newSkill)) {
+                    this.skills.push(newSkill)
+                }
+            }
+        },
+        deleteMe(skill) {
+            this.skills = this.skills.filter((s) => {
+                return s !== skill
+            })
         }
     }
 }
@@ -84,5 +96,19 @@ input[type="checkbox"] {
     margin: 0 10px 0 0;
     position: relative;
     top: 2px;
+}
+
+div.pill {
+    background-color: #eee;
+    border: 1px solid #fff;
+    color: #555;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+    font-weight: bold;
 }
 </style>
