@@ -1,9 +1,10 @@
 <template>
-    <form>
+    <form @submit.prevent="handleSubmit">
         <label>Email</label>
         <input type="email" v-model="email" required>
         <label>Password</label>
-        <input type="password" v-model="password" required>
+        <input type="password" v-model="password" required> 
+        <div class="error" v-if="passwordError">{{ passwordError }}</div>
         <label>Role</label>
         <select v-model="role">
             <option value="developer">Web Developer</option>
@@ -18,11 +19,10 @@
             <input type="checkbox" v-model="terms" required>
             <label>Accept Terms and Conditions</label>
         </div>
+        <div class="submit">
+            <button>Create an Account</button>
+        </div>
     </form>
-    <p>Email: {{ email }}</p>
-    <p>Password: {{ password }}</p>
-    <p>Role: {{ role }}</p>
-    <p>Accepted: {{ terms }}</p>
 </template>
 
 
@@ -31,17 +31,17 @@
 export default {
     data() {
         return {
-            email: 'mario',
+            email: 'mario@amazon.com',
             password: '',
             role: 'developer',
-            terms: false,
+            terms: true,
             tempSkill: '',
-            skills: []
+            skills: [],
+            passwordError: ''
         }
     },
     methods: {
         commaCheck(e) {
-            console.log(e)
             if(e.key === ',') {
                 let newSkill = this.tempSkill.slice(0,-1)
                 this.tempSkill = ''
@@ -55,6 +55,18 @@ export default {
             this.skills = this.skills.filter((s) => {
                 return s !== skill
             })
+        },
+        handleSubmit() {
+            // validate password
+            this.passwordError = this.password.length > 5 ? "" : "Error Password must be greater than 5 characters"
+
+            if(!this.passwordError) {
+                console.log('email: ', this.email)
+                console.log('password: ', this.password)
+                console.log('role: ', this.role)
+                console.log('skills: ', this.skills)
+                console.log('terms accepted: ', this.terms)
+            }
         }
     }
 }
@@ -109,6 +121,26 @@ div.pill {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 16px;
+    font-weight: bold;
+}
+
+button {
+    background: #0b6dff;
+    border: 0px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    color: white;
+    border-radius: 20px;
+}
+
+.submit {
+    text-align: center;
+}
+
+div.error {
+    color: #ff0062;
+    margin-top: 10px;
+    font-size: 0.8em;
     font-weight: bold;
 }
 </style>
