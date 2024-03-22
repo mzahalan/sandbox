@@ -5,8 +5,32 @@
     <router-link :to="{name: 'Links'}">Links</router-link> |
     <router-link :to="{name: 'Jobs'}">Jobs</router-link>
   </nav>
+  <button @click="redirect">Redirect</button>
+  <button @click="back">Go Back</button>
+  <button @click="forward" :disabled="isDisabled">Go Forward</button>
   <router-view/>
 </template>
+
+<script>
+export default {
+  computed: {
+    isDisabled: function() {
+      return false
+    }
+  },
+  methods: {
+    redirect() {
+      this.$router.push({name: 'Home'})
+    },
+    back() {
+      this.$router.go(-1)
+    },
+    forward() {
+      this.$router.go(1)
+    }
+  }
+}
+</script>
 
 <style>
 #app {
@@ -32,5 +56,12 @@ nav a {
 nav a.router-link-exact-active {
   color: white;
   background: crimson;
+}
+
+button {
+  margin: 0 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
 }
 </style>
