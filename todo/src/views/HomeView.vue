@@ -1,9 +1,26 @@
 <template>
   <div class="home">
     <h1>Home</h1>
+    <v-btn class="text-white bg-pink">buton</v-btn><br/>
+    <v-btn variant="flat" color="pink">click me</v-btn><br/>
+    <v-btn variant="text" color="pink">click me</v-btn><br/>
+
+    <v-btn variant="flat" class="text-white bg-pink d-none d-sm-flex">
+      <template v-slot:prepend>
+        <v-icon>mdi-email</v-icon>
+      </template>
+      <span>email me</span>
+    </v-btn><br/>
+
+    <v-btn size="small" variant="flat" class="text-white bg-pink">
+      <span>email me</span>
+      <template v-slot:append>
+        <v-icon size="large">mdi-email</v-icon>
+      </template>
+    </v-btn><br/>
+    <v-btn size="small" icon="mdi-star" color="purple"></v-btn>
+
   </div>
-  <p class="bg-red text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto id numquam sapiente, delectus sint beatae cum! Non nisi ducimus aliquam ipsum vitae, porro asperiores commodi voluptatum, animi sunt alias deserunt accusamus quidem sit mollitia tempore repudiandae! Beatae deserunt labore adipisci exercitationem velit deleniti doloribus similique? Quam facilis fugit ipsum perferendis velit ad dolorem tempora, saepe in ducimus dignissimos officiis, esse ipsam. Inventore, ducimus. Explicabo commodi enim excepturi, hic tempora omnis, asperiores quia placeat dicta dolor natus rem perspiciatis et repellat quibusdam iure maiores ipsum distinctio alias voluptatum magni voluptatibus? Reiciendis illum molestiae fugit nam debitis nulla a doloremque voluptatum labore?</p>
-  <h1 class="text-h1">Massive Display</h1>
 </template>
 
 <script>
